@@ -20,6 +20,7 @@ locals {
   env     = "staging"
   db      = "postgres"
   db_port = "5432"
+  be_port = "8000"
   server_image_code = "SW.VSVR.OS.LNX64.UBNTU.SVR2004.B050"
 }
 
@@ -55,7 +56,7 @@ module "be_server" {
   subnet_id           = module.network.subnet_id
   server_product_code = data.ncloud_server_products.small.server_products[0].product_code
   servername                = "be"
-  acg_port_range      = "8000"
+  acg_port_range      = local.be_port
 }
 
 module "db_server" {
@@ -88,6 +89,16 @@ resource "ncloud_public_ip" "be" {
 
 resource "ncloud_public_ip" "db" {
   server_instance_no = module.db_server.instance_no
+}
+
+module "load_balancer" {
+  source = "../modules/loadBalancer"
+
+  env            = local.env
+  access_key = var.access_key
+  secret_key = var.secret_key
+  vpc_id         = module.network.vpc_id
+  be_instance_no = module.be_server.instance_no
 }
 
 data "ncloud_server_products" "small" {
