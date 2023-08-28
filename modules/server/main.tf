@@ -70,7 +70,7 @@ resource "ncloud_network_interface" "main" {
     name                  = "${var.servername}-nic-${var.env}"
     subnet_no             = var.subnet_id
     access_control_groups = [
-      data.ncloud_vpc.main.default_access_control_group_no,
+      data.ncloud_vpc.main.default_access_control_group_no, #default acg setting
       ncloud_access_control_group.main.id,
-      ]
+    ]
 }
