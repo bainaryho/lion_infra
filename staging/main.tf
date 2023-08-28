@@ -110,6 +110,7 @@ module "load_balancer" {
 }
 
 resource "ssh_resource" "init_db" {
+  depends_on = [ module.be_server ]
   when = "create"
 
   host         = ncloud_public_ip.db.public_ip
@@ -131,6 +132,7 @@ resource "ssh_resource" "init_db" {
 }
 
 resource "ssh_resource" "init_be" {
+  depends_on = [ module.be_server ]
   when = "create"
 
   host         = ncloud_public_ip.be.public_ip
