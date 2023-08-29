@@ -35,4 +35,4 @@ terraform.rc
 
 #lock
 .terraform.lock.hcl
-staging/set_be_server.sh
+NCP/staging/set_be_server.sh
