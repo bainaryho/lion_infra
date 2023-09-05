@@ -37,3 +37,4 @@ terraform.rc
 .terraform.lock.hcl
 NCP/staging/set_be_server.sh
 AWS/staging/set_be_server.sh
+AWS/modules/server/be_init_script.tftpl

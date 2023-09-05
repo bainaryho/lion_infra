@@ -25,3 +25,7 @@ variable "init_script_path" {
 variable "init_script_vars" {
   type = map(any)
 }
+
+variable "django_secret" {
+  type = string
+}

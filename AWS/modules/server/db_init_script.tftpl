@@ -33,6 +33,13 @@ echo "POSTGRES_USER=${db_user}">> $ENV_PATH
 echo "POSTGRES_PASSWORD=${db_password}!">> $ENV_PATH
 echo "POSTGRES_PORT=${db_port}">> $ENV_PATH
 
-echo tXz5+VRNWXrduyxvNHD49JlOniNKJCw81Og291nV6L1TKgSEV/kyvo7ZEPTzmynRBkqbzZCN8/68pLxRIZSI5TP69tXz5+VRNWXrduyds/rNEzoT9ePFmZe92YloxmXe5YB364PmDiTfzR+zUa5xeeSXAUqh3ON+0d9B22OMd3H1MC0K/D5Zi77UPI/2znV0Ze92YloxmXe5YBy+Gf5PG7XTmtC5KXoJQa/VjOlvh6ojsId2t9eRtd+J/4HUfdCiiuHd6XeV6JgLo+nwGN09GoATT/wW30rJl8epAHAojsId2t9eRtd+JNIwlpR1JqlHadFk1p8Ouhe3ZL9v360sk7I3BbW+RfXU3Ec9pkGdwOAJaNkzs1wemi4ToBDylcKsF4qNUDnyQ5coGLU3Ec9pkGdwOAJatAUlKXZMaywRfTikCb1d8q5Lteoa3NGdCQFgROmuA/ZidM3JkCifDt91U1qp1imZYocdPC7+LGfr+DMHVZbgt4XRaU1qp1imZYocdPCEegRvdu95zCFPlf50= rkswl@DESKTOP-LEBKQ30 >> >> /home/$USERNAME/.ssh/authorized_keys
+echo tXz5+VRNWXrduyxvNHD49JlOniNKJCw81Og291nV6L1TKgSEV/kyvo7ZEPTzmynRBkqbzZCN8/68pLxRIZSI5TP69tXz5+VRNWXrduyds/rNEzoT9ePFmZe92YloxmXe5YB364PmDiTfzR+zUa5xeeSXAUqh3ON+0d9B22OMd3H1MC0K/D5Zi77UPI/2znV0Ze92YloxmXe5YBy+Gf5PG7XTmtC5KXoJQa/VjOlvh6ojsId2t9eRtd+J/4HUfdCiiuHd6XeV6JgLo+nwGN09GoATT/wW30rJl8epAHAojsId2t9eRtd+JNIwlpR1JqlHadFk1p8Ouhe3ZL9v360sk7I3BbW+RfXU3Ec9pkGdwOAJaNkzs1wemi4ToBDylcKsF4qNUDnyQ5coGLU3Ec9pkGdwOAJatAUlKXZMaywRfTikCb1d8q5Lteoa3NGdCQFgROmuA/ZidM3JkCifDt91U1qp1imZYocdPC7+LGfr+DMHVZbgt4XRaU1qp1imZYocdPCEegRvdu95zCFPlf50= rkswl@DESKTOP-LEBKQ30 >> /home/$USERNAME/.ssh/authorized_keys
+
+docker pull postgres:13
+
+docker run -d -p 5432:5432 --name db \
+    -v postgres_data:/var/lib/postgresql/data \
+    --env-file $ENV_PATH \
+    postgres:13
 
 echo "done"
